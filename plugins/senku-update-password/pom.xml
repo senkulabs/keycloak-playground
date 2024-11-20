@@ -8,8 +8,8 @@
   <name>senku-update-password</name>
   <url>http://maven.apache.org</url>
   <properties>
-    <keycloak.version>22.0.5</keycloak.version>
-    <java.release>17</java.release>
+    <keycloak.version>25.0.6</keycloak.version>
+    <java.release>21</java.release>
   </properties>
   <dependencies>
     <dependency>

@@ -80,7 +80,7 @@ To facilitate this case, we will use one of Service Provider that provided by Ke
 
 **Prerequisites**
 
-1. You already install Java Development Kit (JDK) that matched with Keycloak. In this case I use Keycloak version 22.0.5, so the JDK version is 17 LTS.
+1. You already install Java Development Kit (JDK) that matched with Keycloak. In this case I use Keycloak version 25.0.6, so the JDK version is 21 LTS.
 2. You already install Maven as a scaffolding project and build the plugin.
 
 **Brief Steps**
@@ -95,8 +95,8 @@ mvn archetype:generate -DgroupId=stream.senku -DartifactId=senku-update-password
 
 ```xml
 <properties>
-    <keycloak.version>22.0.5</keycloak.version>
-    <java.release>17</java.release>
+    <keycloak.version>25.0.6</keycloak.version>
+    <java.release>21</java.release>
 </properties>
 ```
 
