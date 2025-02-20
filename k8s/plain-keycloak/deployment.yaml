@@ -1,0 +1,55 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak-deployment
+  namespace: keycloak
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:23.0.7
+          args:
+            - "start"
+          env:
+          - name: KC_HTTP_ENABLED
+            value: "true"
+          - name: KC_HOSTNAME_STRICT
+            value: "false"
+          - name: KC_PROXY
+            value: "edge"
+          - name: KEYCLOAK_ADMIN
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: KEYCLOAK_ADMIN
+          - name: KEYCLOAK_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: KEYCLOAK_ADMIN_PASSWORD
+          - name: JAVA_OPTS
+            value: "-Xms512m -Xmx1024m"
+          envFrom:
+            - secretRef:
+                name: keycloak-secret
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+          ports:
+          - name: http
+            containerPort: 8080
