@@ -4,8 +4,8 @@ metadata:
   name: keycloak-ingress-public
   namespace: keycloak
   annotations:
-    nginx.kubernetes.io/affinity: "cookie"
-    nginx.kubernetes.io/session-cookie-name: "AUTH_SESSION_ID"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "AUTH_SESSION_ID"
 spec:
   ingressClassName: nginx
   rules:
@@ -51,8 +51,8 @@ metadata:
   name: keycloak-ingress-admin
   namespace: keycloak
   annotations:
-    nginx.kubernetes.io/affinity: "cookie"
-    nginx.kubernetes.io/session-cookie-name: "AUTH_SESSION_ID"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "AUTH_SESSION_ID"
 spec:
   ingressClassName: nginx
   rules:
