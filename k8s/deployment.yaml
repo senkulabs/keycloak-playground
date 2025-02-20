@@ -44,7 +44,6 @@ spec:
           image: asia-southeast2-docker.pkg.dev/project-id/project-id/keycloak:latest
           args:
             - "start"
-            - "--spi-sticky-session-encoder-infinispan-should-attach-route=false"
           env:
           - name: KC_HTTP_ENABLED
             value: "true"
