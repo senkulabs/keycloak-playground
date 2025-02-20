@@ -57,6 +57,16 @@ spec:
             value: "true"
           - name: KC_PROXY
             value: "edge"
+          - name: KEYCLOAK_ADMIN
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: KEYCLOAK_ADMIN
+          - name: KEYCLOAK_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: KEYCLOAK_ADMIN_PASSWORD
           - name: KC_DB
             value: "postgres"
           - name: KC_DB_URL
