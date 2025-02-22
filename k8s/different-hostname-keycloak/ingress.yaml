@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-ingress-public
+  namespace: keycloak
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: sso.domain.tld
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: keycloak-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - sso.domain.tld
+    secretName: keycloak-tls-secret
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-ingress-admin
+  namespace: keycloak
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: iam.domain.tld
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: keycloak-service
+            port:
+              number: 80
+  tls:
+    - hosts:
+        - iam.domain.tld
+      secretName: keycloak-tls-secret
