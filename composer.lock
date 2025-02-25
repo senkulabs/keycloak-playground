@@ -39,7 +39,7 @@
             "authors": [
                 {
                     "name": "Riset dan Teknologi USDI",
-                    "email": "usdi@unud.ac.id"
+                    "email": "usdi@domain.tld"
                 }
             ],
             "description": "Keycloak Service Account library using PHP",
