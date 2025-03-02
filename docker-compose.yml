@@ -1,6 +1,5 @@
 services:
   postgres:
-    container_name: iam-postgres
     restart: unless-stopped
     tty: true
     image: postgres
@@ -11,15 +10,18 @@ services:
       - POSTGRES_USER=keycloak
       - POSTGRES_PASSWORD=password
     networks:
-      - iam-simulation-network
+      - keycloak-playground-network
     volumes:
-      - iam-simulation-db:/var/lib/postgresql/data
+      - keycloak-playground-db:/var/lib/postgresql/data
   keycloak:
-    container_name: iam-keycloak
     restart: unless-stopped
     tty: true
-    # --spi-theme params for develop custom themes in Keycloak
-    command: ["start-dev", "--http-port", "8180", "--spi-theme-static-max-age", "-1", "--spi-theme-cache-themes", "false", "--spi-theme-cache-templates", "false"]
+    command:
+      - start-dev
+      - --http-port=8180
+      - --spi-theme-static-max-age=-1
+      - --spi-theme-cache-themes=false
+      - --spi-theme-cache-templates=false
     image: quay.io/keycloak/keycloak:25.0.6
     ports:
       - 8182:8180
@@ -35,12 +37,12 @@ services:
     volumes:
       - ./providers/:/opt/keycloak/providers/
     networks:
-      - iam-simulation-network
+      - keycloak-playground-network
 
 networks:
-  iam-simulation-network:
-    name: iam-simulation-network
+  keycloak-playground-network:
+    name: keycloak-playground-network
 
 volumes:
-  iam-simulation-db:
-    name: iam-simulation-db
+  keycloak-playground-db:
+    name: keycloak-playground-db
