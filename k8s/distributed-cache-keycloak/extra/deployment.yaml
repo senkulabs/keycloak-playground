@@ -81,8 +81,6 @@ spec:
               secretKeyRef:
                 name: keycloak-secret
                 key: DB_PASSWORD
-          - name: KC_FEATURES
-            value: token-exchange,admin-fine-grained-authz,account-api
           - name: KC_CACHE
             value: "ispn"
           - name: KC_CACHE_STACK

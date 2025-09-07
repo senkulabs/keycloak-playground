@@ -81,8 +81,6 @@ spec:
               secretKeyRef:
                 name: keycloak-secret
                 key: DB_PASSWORD
-          - name: KC_FEATURES
-            value: token-exchange,admin-fine-grained-authz,account-api
           - name: JAVA_OPTS
             value: "-Xms512m -Xmx1024m"
           resources:
