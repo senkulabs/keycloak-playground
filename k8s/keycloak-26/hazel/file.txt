@@ -1,0 +1,1 @@
+Themes goes here. It comes from Keywind: https://github.com/lukin/keywind. I would like to try Keycloakify but with Svelte vibes.
